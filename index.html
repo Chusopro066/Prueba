@@ -1,88 +1,1043 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Illuminate</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link id="theme-link" rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="css/cookies.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-    <meta
-      name="keywords"
-      content="front-end web developer, unblocked, games, google sites, unblocked games mom, ublocked, code, coding, programmer, development, javascript, jquery, bootstrap, sass, less, git, gaming, internet, website, best, site, cool, free games, unblocked games, illuminate"
-    />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3317735030374126"
-     crossorigin="anonymous"></script>
-</head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YWST91LFXD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-YWST91LFXD');
-</script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ed6f2b8e9eb340118d03074b554fb407"}'></script><!-- End Cloudflare Web Analytics -->
-    <body>
-    <header>
-        <nav class="top-nav">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="projects.html">Games</a></li>
-                <li><a href="proxies.html">Proxies</a></li>
-                <li><a href="apps.html">Apps</a></li>
-                <li><a href="cheats.html">Cheats</a></li>
-                <li><a href="chat.html">Chat</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="review.html">Feedback</a></li>
-                <li><a href="settings.html">Settings</a></li>
-                <li><a href="other/index.html">Other</a></li>
-                <li><a href="about-blank">about:blank</a></li>
-            </ul>
-        </nav>
-        <div style="font-size: 150%"><h1>Illuminate</h1></div>
-        <span id="subtitle">...</span><br /><br />
-    </header><br />
-    <div class="center">
-    </div>
-    <div class="container">
-        <button id="play-btn" class="play-button" onclick="redirect('projects.html')">Get Started</button><br />
-    </div>
-    <div class="spacer"></div>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3317735030374126"
-     crossorigin="anonymous"></script>
-<!-- Projects Ad -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3317735030374126"
-     data-ad-slot="4276812776"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Operación Mochila Marrón: Full Edition con Texturas (Depurado)</title>
+
+<style>
+
+/* ============================ */
+
+/* ESTILOS GLOBALES Y HUD */
+
+/* ============================ */
+
+body {
+
+margin: 0;
+
+overflow: hidden;
+
+background: #111;
+
+font-family: Arial, sans-serif;
+
+}
+
+canvas {
+
+display: block;
+
+}
+
+#hud {
+
+position: fixed;
+
+top: 10px;
+
+left: 10px;
+
+z-index: 10;
+
+color: #fff;
+
+}
+
+.bar-container {
+
+margin-bottom: 10px;
+
+width: 250px;
+
+background: #333;
+
+border: 2px solid #555;
+
+border-radius: 4px;
+
+overflow: hidden;
+
+}
+
+.bar-label {
+
+font-size: 14px;
+
+padding: 2px 4px;
+
+background: #222;
+
+}
+
+.bar-fill {
+
+height: 20px;
+
+background: red;
+
+width: 0%;
+
+transition: width 0.3s;
+
+}
+
+#vigilance .bar-fill {
+
+background: yellow;
+
+}
+
+#instructions {
+
+position: fixed;
+
+bottom: 10px;
+
+left: 10px;
+
+color: #ccc;
+
+font-size: 14px;
+
+z-index: 10;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="hud">
+
+<div class="bar-container" id="suspicion">
+
+<div class="bar-label">Sospecha</div>
+
+<div class="bar-fill" id="suspicionFill"></div>
+
+</div>
+
+<div class="bar-container" id="vigilance">
+
+<div class="bar-label">Vigilancia</div>
+
+<div class="bar-fill" id="vigilanceFill"></div>
+
+</div>
+
+</div>
+
+<div id="instructions">
+
+Haz clic para activar el puntero.<br>
+
+Mueve con WASD, mira con el ratón.<br>
+
+Presiona "E" para defecar en mochila y "F" para esconderla.<br>
+
+Presiona "R" para reiniciar el juego.
+
+</div>
+
+<!-- ================================================================= -->
+
+<!-- CARGA DE THREE.JS Y CONTROLES -->
+
+<!-- ================================================================= -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r148/three.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.148.0/examples/js/controls/PointerLockControls.js"></script>
+
 <script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
+
+// =======================================================
+
+// VARIABLES GLOBALES Y ESTADO DEL JUEGO
+
+// =======================================================
+
+let suspicion = 0; // 0-100
+
+let vigilance = 0; // 0-100
+
+let gameOver = false;
+
+const SUSPICION_MAX = 100;
+
+const VIGILANCE_MAX = 100;
+
+let score = 0;
+
+let hiddenCount = 0;
+
+
+// =======================================================
+
+// CONFIGURACIÓN DEL LOADING MANAGER Y TEXTURAS
+
+// =======================================================
+
+const loadingManager = new THREE.LoadingManager(() => {
+
+// Una vez cargadas las texturas, construir el escenario
+
+init();
+
+animate();
+
+});
+
+
+loadingManager.onError = function(url) {
+
+console.error('Error cargando ' + url);
+
+};
+
+
+const textureLoader = new THREE.TextureLoader(loadingManager);
+
+const floorTexture = textureLoader.load('https://threejsfundamentals.org/threejs/resources/images/checker.png');
+
+floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping;
+
+floorTexture.repeat.set(20, 20);
+
+
+const wallTexture = textureLoader.load('https://threejsfundamentals.org/threejs/resources/images/wall.jpg');
+
+wallTexture.wrapS = wallTexture.wrapT = THREE.RepeatWrapping;
+
+wallTexture.repeat.set(4, 2);
+
+
+// =======================================================
+
+// VARIABLES DE THREE.JS: Escena, Cámara, Renderer
+
+// =======================================================
+
+let scene, camera, renderer, controls;
+
+const clock = new THREE.Clock();
+
+
+function init() {
+
+// Escena
+
+scene = new THREE.Scene();
+
+scene.background = new THREE.Color(0x555555);
+
+// Cámara
+
+camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1500);
+
+camera.position.set(0, 1.6, 0);
+
+// Renderer
+
+renderer = new THREE.WebGLRenderer({ antialias: true });
+
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+document.body.appendChild(renderer.domElement);
+
+// Controles PointerLock
+
+controls = new THREE.PointerLockControls(camera, document.body);
+
+document.body.addEventListener('click', () => { if(!gameOver){ controls.lock(); } });
+
+// Luces
+
+const ambientLight = new THREE.AmbientLight(0x404040);
+
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+
+directionalLight.position.set(0, 100, 50);
+
+scene.add(directionalLight);
+
+// =======================================================
+
+// CREACIÓN DEL ESCENARIO: Suelo y Paredes con Texturas
+
+// =======================================================
+
+// Suelo texturizado
+
+const floorGeometry = new THREE.PlaneGeometry(500, 500, 50, 50);
+
+const floorMaterial = new THREE.MeshLambertMaterial({ map: floorTexture });
+
+const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+
+floor.rotation.x = -Math.PI / 2;
+
+floor.receiveShadow = true;
+
+scene.add(floor);
+
+// Función para crear paredes texturizadas
+
+function createWall(x, z, width, height, depth, rotation = 0) {
+
+const wallGeo = new THREE.BoxGeometry(width, height, depth);
+
+const wallMat = new THREE.MeshLambertMaterial({ map: wallTexture });
+
+const wall = new THREE.Mesh(wallGeo, wallMat);
+
+wall.position.set(x, height/2, z);
+
+wall.rotation.y = rotation;
+
+scene.add(wall);
+
+return wall;
+
+}
+
+// Paredes laterales
+
+createWall(-250, 0, 1, 20, 500);
+
+createWall(250, 0, 1, 20, 500);
+
+createWall(0, -250, 500, 20, 1);
+
+createWall(0, 250, 500, 20, 1);
+
+// =======================================================
+
+// CREACIÓN DEL RESTO DEL JUEGO: NPCs, Mochilas, etc.
+
+// =======================================================
+
+createNPCs();
+
+createBackpacks();
+
+// Configurar eventos de teclado
+
+setupKeyboard();
+
+// Evento de resize
+
+window.addEventListener('resize', onWindowResize);
+
+}
+
+
+// =======================================================
+
+// FUNCIONES UTILES
+
+// =======================================================
+
+function clamp(val, min, max) {
+
+return Math.max(min, Math.min(max, val));
+
+}
+
+function updateHUD() {
+
+document.getElementById('suspicionFill').style.width = clamp(suspicion, 0, 100) + '%';
+
+document.getElementById('vigilanceFill').style.width = clamp(vigilance, 0, 100) + '%';
+
+}
+
+function onWindowResize() {
+
+camera.aspect = window.innerWidth/window.innerHeight;
+
+camera.updateProjectionMatrix();
+
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+}
+
+function setupKeyboard() {
+
+// Configuración inicial ya realizada con addEventListener globales
+
+document.addEventListener('keydown', (e) => { keys[e.code] = true; });
+
+document.addEventListener('keyup', (e) => { keys[e.code] = false; });
+
+document.addEventListener('keydown', (event) => {
+
+if(event.code === 'KeyR') {
+
+restartGame();
+
+}
+
+});
+
+}
+
+
+// =======================================================
+
+// CLASES: Player, NPC, Backpack
+
+// =======================================================
+
+class Player {
+
+constructor() {
+
+this.speed = 5;
+
+this.velocity = new THREE.Vector3();
+
+this.direction = new THREE.Vector3();
+
+}
+
+update(delta) {
+
+this.velocity.set(0, 0, 0);
+
+this.direction.z = Number(keys['KeyW']) - Number(keys['KeyS']);
+
+this.direction.x = Number(keys['KeyD']) - Number(keys['KeyA']);
+
+this.direction.normalize();
+
+if(controls.isLocked && this.direction.length() > 0) {
+
+this.velocity.z = this.direction.z * this.speed * delta;
+
+this.velocity.x = this.direction.x * this.speed * delta;
+
+controls.moveRight(this.velocity.x);
+
+controls.moveForward(this.velocity.z);
+
+}
+
+}
+
+}
+
+const player = new Player();
+
+
+class NPC {
+
+constructor(role, position) {
+
+this.role = role; // 'profesor' o 'alumno'
+
+this.speed = (role === 'profesor') ? 1.8 : 1.2;
+
+this.fov = (role === 'profesor') ? 70 : 60;
+
+this.viewDistance = 10;
+
+this.waitTime = 0;
+
+this.maxWaitTime = Math.random() * 2 + 1;
+
+this.currentPatrolIndex = 0;
+
+this.patrolPoints = [];
+
+let geometry, material;
+
+if(role === 'profesor') {
+
+geometry = new THREE.CylinderGeometry(0.3, 0.3, 1.8, 12);
+
+material = new THREE.MeshLambertMaterial({ color: 0xffaa00 });
+
+} else {
+
+geometry = new THREE.CylinderGeometry(0.25, 0.25, 1.5, 12);
+
+material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
+
+}
+
+this.mesh = new THREE.Mesh(geometry, material);
+
+this.mesh.position.copy(position);
+
+scene.add(this.mesh);
+
+}
+
+setPatrolPoints(points) {
+
+this.patrolPoints = points;
+
+}
+
+update(delta) {
+
+if(this.patrolPoints.length === 0) return;
+
+const target = this.patrolPoints[this.currentPatrolIndex];
+
+const dist = this.mesh.position.distanceTo(target);
+
+if(dist > 0.2) {
+
+const dir = new THREE.Vector3().subVectors(target, this.mesh.position).normalize();
+
+this.mesh.position.add(dir.multiplyScalar(this.speed * delta));
+
+} else {
+
+this.waitTime += delta;
+
+if(this.waitTime >= this.maxWaitTime) {
+
+this.currentPatrolIndex = (this.currentPatrolIndex + 1) % this.patrolPoints.length;
+
+this.waitTime = 0;
+
+}
+
+}
+
+this.mesh.lookAt(this.patrolPoints[this.currentPatrolIndex]);
+
+}
+
+detectPlayer() {
+
+const dist = this.mesh.position.distanceTo(camera.position);
+
+if(dist > this.viewDistance) return false;
+
+let npcDir = new THREE.Vector3(0, 0, -1);
+
+npcDir.applyQuaternion(this.mesh.quaternion);
+
+let toPlayer = new THREE.Vector3().subVectors(camera.position, this.mesh.position).normalize();
+
+const angle = npcDir.angleTo(toPlayer) * (180/Math.PI);
+
+return angle < (this.fov/2);
+
+}
+
+}
+
+const npcs = [];
+
+class Backpack {
+
+constructor(position) {
+
+this.position = position.clone();
+
+this.pooped = false;
+
+this.hidden = false;
+
+this.materialVisible = new THREE.MeshLambertMaterial({ color: 0x0066ff });
+
+this.materialHidden = new THREE.MeshLambertMaterial({ color: 0x000055 });
+
+const geometry = new THREE.BoxGeometry(0.5, 0.3, 0.2);
+
+this.mesh = new THREE.Mesh(geometry, this.materialVisible);
+
+this.mesh.position.copy(this.position);
+
+scene.add(this.mesh);
+
+this.poopMesh = null;
+
+}
+
+doPoop() {
+
+if(!this.pooped && !this.hidden) {
+
+this.pooped = true;
+
+const geo = new THREE.BoxGeometry(0.3, 0.1, 0.2);
+
+const mat = new THREE.MeshLambertMaterial({ color: 0x5e3f20 });
+
+this.poopMesh = new THREE.Mesh(geo, mat);
+
+this.poopMesh.position.copy(this.mesh.position);
+
+this.poopMesh.position.y += 0.2;
+
+scene.add(this.poopMesh);
+
+}
+
+}
+
+hide() {
+
+if(!this.hidden) {
+
+this.hidden = true;
+
+this.mesh.material = this.materialHidden;
+
+if(this.poopMesh) {
+
+this.poopMesh.visible = false;
+
+}
+
+}
+
+}
+
+reveal() {
+
+if(this.hidden) {
+
+this.hidden = false;
+
+this.mesh.material = this.materialVisible;
+
+if(this.poopMesh) {
+
+this.poopMesh.visible = true;
+
+}
+
+}
+
+}
+
+}
+
+const backpacks = [];
+
+
+// =======================================================
+
+// CREACIÓN DE NPCs Y BACKPACKS EN EL ESCENARIO
+
+// =======================================================
+
+function createNPCs() {
+
+// Profesores
+
+for(let i = 0; i < 5; i++){
+
+const pos = new THREE.Vector3((Math.random()-0.5)*400, 0.9, (Math.random()-0.5)*400);
+
+const profesor = new NPC('profesor', pos);
+
+let points = [];
+
+for(let j = 0; j < 3; j++){
+
+const offset = new THREE.Vector3((Math.random()-0.5)*50, 0, (Math.random()-0.5)*50);
+
+points.push(pos.clone().add(offset));
+
+}
+
+profesor.setPatrolPoints(points);
+
+npcs.push(profesor);
+
+}
+
+// Alumnos
+
+for(let i = 0; i < 8; i++){
+
+const pos = new THREE.Vector3((Math.random()-0.5)*400, 0.75, (Math.random()-0.5)*400);
+
+const alumno = new NPC('alumno', pos);
+
+let points = [];
+
+for(let j = 0; j < 2; j++){
+
+const offset = new THREE.Vector3((Math.random()-0.5)*30, 0, (Math.random()-0.5)*30);
+
+points.push(pos.clone().add(offset));
+
+}
+
+alumno.setPatrolPoints(points);
+
+npcs.push(alumno);
+
+}
+
+}
+
+
+function createBackpacks() {
+
+for(let i = 0; i < 20; i++){
+
+const pos = new THREE.Vector3((Math.random()-0.5)*400, 0.15, (Math.random()-0.5)*400);
+
+const bp = new Backpack(pos);
+
+backpacks.push(bp);
+
+}
+
+}
+
+
+// =======================================================
+
+// SISTEMA DE INTERACCIÓN Y DETECCIÓN
+
+// =======================================================
+
+function updateDetection(delta) {
+
+npcs.forEach(npc => {
+
+if(npc.detectPlayer()){
+
+suspicion += 10 * delta;
+
+vigilance += (npc.role === 'profesor') ? 8 * delta : 4 * delta;
+
+}
+
+});
+
+}
+
+function updateBackpackDiscovery(delta) {
+
+backpacks.forEach(bp => {
+
+if(bp.pooped && !bp.hidden){
+
+npcs.forEach(npc => {
+
+const dist = npc.mesh.position.distanceTo(bp.mesh.position);
+
+if(dist < 5){
+
+vigilance += 15 * delta;
+
+}
+
+});
+
+}
+
+});
+
+}
+
+function checkGameOver() {
+
+if(suspicion >= SUSPICION_MAX || vigilance >= VIGILANCE_MAX){
+
+gameOver = true;
+
+controls.unlock();
+
+alert("¡Te han atrapado! Expulsado del cole.\nPuntuación: " + score);
+
+setTimeout(() => { location.reload(); }, 5000);
+
+}
+
+}
+
+
+// Interacciones: defecar en mochila y esconderla.
+
+function checkDefecation() {
+
+backpacks.forEach(bp => {
+
+if(!bp.pooped && !bp.hidden){
+
+const dist = bp.mesh.position.distanceTo(camera.position);
+
+if(dist < 2 && keys['KeyE']){
+
+bp.doPoop();
+
+suspicion += 5;
+
+vigilance += 10;
+
+score += 1;
+
+}
+
+}
+
+});
+
+}
+
+function checkHideBackpack() {
+
+backpacks.forEach(bp => {
+
+if(!bp.hidden){
+
+const dist = bp.mesh.position.distanceTo(camera.position);
+
+if(dist < 2 && keys['KeyF']){
+
+bp.hide();
+
+vigilance -= 5;
+
+hiddenCount += 1;
+
+}
+
+}
+
+});
+
+}
+
+// =======================================================
+
+// SISTEMA DE GUARDADO Y REINICIO
+
+// =======================================================
+
+function saveGame() {
+
+const state = {
+
+suspicion, vigilance, score, hiddenCount,
+
+playerPos: camera.position.toArray(),
+
+npcPositions: npcs.map(npc => npc.mesh.position.toArray()),
+
+backpackStates: backpacks.map(bp => ({
+
+pos: bp.mesh.position.toArray(),
+
+pooped: bp.pooped,
+
+hidden: bp.hidden
+
+}))
+
+};
+
+localStorage.setItem("opMochilaState", JSON.stringify(state));
+
+console.log("Juego guardado.");
+
+}
+
+function restartGame() {
+
+suspicion = 0;
+
+vigilance = 0;
+
+score = 0;
+
+hiddenCount = 0;
+
+gameOver = false;
+
+camera.position.set(0, 1.6, 0);
+
+npcs.forEach(npc => {
+
+if(npc.patrolPoints.length > 0){
+
+npc.mesh.position.copy(npc.patrolPoints[0]);
+
+npc.currentPatrolIndex = 0;
+
+}
+
+});
+
+backpacks.forEach(bp => {
+
+bp.pooped = false;
+
+bp.hidden = false;
+
+bp.mesh.material = bp.materialVisible;
+
+if(bp.poopMesh){
+
+scene.remove(bp.poopMesh);
+
+bp.poopMesh = null;
+
+}
+
+});
+
+controls.lock();
+
+console.log("Juego reiniciado.");
+
+}
+
+setInterval(saveGame, 30000);
+
+
+// =======================================================
+
+// EFECTOS VISUALES ADICIONALES
+
+// =======================================================
+
+function applyVisualEffects(delta) {
+
+if(suspicion > 80){
+
+const intensity = Math.abs(Math.sin(Date.now() * 0.005)) * 0.5;
+
+renderer.setClearColor(new THREE.Color(0x550000).multiplyScalar(intensity));
+
+} else {
+
+renderer.setClearColor(new THREE.Color(0x555555));
+
+}
+
+}
+
+// =======================================================
+
+// BUCLE DE ANIMACIÓN
+
+// =======================================================
+
+function animate() {
+
+if(gameOver) return;
+
+requestAnimationFrame(animate);
+
+const delta = clock.getDelta();
+
+player.update(delta);
+
+npcs.forEach(npc => npc.update(delta));
+
+checkDefecation();
+
+checkHideBackpack();
+
+updateDetection(delta);
+
+updateBackpackDiscovery(delta);
+
+applyVisualEffects(delta);
+
+updateHUD();
+
+checkGameOver();
+
+renderer.render(scene, camera);
+
+}
+
+// =======================================================
+
+// SISTEMA DE IA SIMPLIFICADA (Extra)
+
+// =======================================================
+
+class SimpleAISystem {
+
+constructor(npcs) {
+
+this.npcs = npcs;
+
+this.lastUpdate = Date.now();
+
+}
+
+update(delta) {
+
+this.npcs.forEach(npc => {
+
+npc.speed = (suspicion > 50) ? ((npc.role === 'profesor') ? 2.5 : 1.8) : ((npc.role === 'profesor') ? 1.8 : 1.2);
+
+});
+
+this.lastUpdate = Date.now();
+
+}
+
+status() {
+
+return "Sistemas de IA operativos.";
+
+}
+
+}
+
+const aiSystem = new SimpleAISystem(npcs);
+
+function updateAISystem(delta) {
+
+aiSystem.update(delta);
+
+if(Date.now() - aiSystem.lastUpdate > 10000){
+
+console.log(aiSystem.status());
+
+}
+
+}
+
+(function integrateAISystem(){
+
+function loopAI() {
+
+if(gameOver) return;
+
+requestAnimationFrame(loopAI);
+
+const deltaAI = clock.getDelta();
+
+updateAISystem(deltaAI);
+
+}
+
+loopAI();
+
+})();
+
 </script>
-        <div class="small-spacer"></div>
-        <a href="https://github.com/xlluminate/Illuminate" target="_blank" class="github-link">
-        <img src="img/github.svg" alt="GitHub Logo">
-    </a>
-        <footer>
-        <p>&copy; 2024 Illuminate. All rights reserved.</p>
-    </footer>
-    <script src="js/cookies.js"></script>
-    <script src="js/subtitle.js"></script>
-    <script>
-        function redirect(location) {
-            window.location.href= location
-        }
-    </script>
-    <script src="/js/main.js"></script>
+
 </body>
+
 </html>
+
+
